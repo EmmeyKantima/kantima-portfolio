@@ -1,0 +1,140 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 150px;
+  background: rgba(11, 18, 32, 0.88);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.navbar-logo:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 32px;
+}
+
+.navbar-links a {
+  position: relative;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: var(--primary);
+}
+
+.navbar-links a:hover {
+  color: var(--primary);
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+.navbar-cta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+.navbar-cta:hover {
+  background: var(--primary);
+  color: var(--bg);
+  border-color: var(--primary);
+}
+
+.navbar-menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    height: 68px;
+    padding: 0 20px;
+  }
+
+  .navbar-menu-button {
+    display: flex;
+  }
+
+  .navbar-cta {
+    display: none;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 68px;
+    left: 20px;
+    right: 20px;
+
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px;
+    background: rgba(17, 28, 48, 0.98);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-links a {
+    padding: 14px 12px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+
+  .navbar-links a:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .navbar-links a::after {
+    display: none;
+  }
+}
+
