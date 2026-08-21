@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { getProjects } from "../../services/api";
 import "./Projects.css";
 
+// Project screenshots are stored locally because images are not part of the API data
 import weatherImage from "../../assets/weather.png";
 import petSwipeImage from "../../assets/petswipe.png";
 import fallingStarImage from "../../assets/falling-star.png";
@@ -10,6 +11,7 @@ import baziImage from "../../assets/bazi.png";
 import onceUponImage from "../../assets/once-upon.png";
 
 function Projects() {
+    // Stores project data retrieved from Admin page
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -18,6 +20,7 @@ function Projects() {
                 const data = await getProjects();
                 setProjects(data);
             } catch (error) {
+                // API or network errors
                 console.error("Failed to load projects:", error);
             }
         }
@@ -47,10 +50,12 @@ function Projects() {
 
             <div className="projects-grid">
 
+                {/* Render each project returned by the API */}
                 {projects.map((project) => (
 
                     <article className="project-card" key={project._id}>
 
+                        {/* Project screenshot */}
                         <div className="project-image">
                             <img src={projectImages[project.title]} alt={`${project.title} project preview`}/>
                         </div>
@@ -69,6 +74,7 @@ function Projects() {
                                 ))}
                             </div>
 
+                            {/* Links to the live project and GitHub repository */}
                             <div className="project-links">
 
                                 <a href={project.demo} target="_blank" rel="noopener noreferrer">

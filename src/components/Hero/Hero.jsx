@@ -24,6 +24,7 @@ function Hero() {
         </div>
       </div>
 
+      {/* Decorative technology orbit displayed in the hero section */}
       <div className="hero-tech">
         <div className="tech-orbit tech-1">
           React

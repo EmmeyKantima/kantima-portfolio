@@ -4,15 +4,18 @@ import "./Contact.css";
 function Contact() {
     const [status, setStatus] = useState("");
 
+    // Handles form submission and sends the data to Formspree
     async function handleSubmit(event) {
         event.preventDefault();
 
         const form = event.target;
         const formData = new FormData(form);
 
+        // Let the user know that the message is being submitted
         setStatus("Sending...");
 
         try {
+            // Send the form data to the Formspree
             const response = await fetch(
                 import.meta.env.VITE_FORMSPREE_URL,
                 {
@@ -24,6 +27,7 @@ function Contact() {
                 }
             );
 
+            // Display success message and clear form
             if (response.ok) {
                 setStatus("Message sent successfully!");
                 form.reset();
@@ -31,6 +35,7 @@ function Contact() {
                 setStatus("Unable to send message. Please try again.");
             }
         } catch (error) {
+            // Network or unexpected errors
             console.error(error);
             setStatus("Unable to send message. Please try again.");
         }
